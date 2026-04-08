@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule | The Milk Movement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f7f3ec;--beige:#f0ede4;--mauve:#d4bac3;
+  --gold:#C59DAB;--gold-lt:#D9C2CC;--rose:#b08090;
+  --ink:#2c2418;--ink-mid:#5a4e45;--ink-lt:#8a7e76;
+  --serif:'DM Sans','Helvetica Neue',Arial,sans-serif;
+  --sans:'DM Sans','Helvetica Neue',Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:#fff;color:var(--ink);font-size:22px;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;background:rgba(255,255,255,0.96);border-bottom:1px solid rgba(197,157,171,0.12);backdrop-filter:blur(8px)}
+.nav-brand{display:flex;align-items:center;gap:0.7rem;text-decoration:none}
+.nav-brand-icon{width:38px;height:38px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:1.1rem;font-weight:700;font-style:italic}
+.nav-brand-text{line-height:1.1}
+.nav-brand-name{font-family:var(--serif);font-size:0.95rem;font-weight:500;color:var(--ink);display:block}
+.nav-brand-sub{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-lt);display:block}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-links a.active{border-bottom:2px solid var(--gold);padding-bottom:2px}
+.nav-ig{color:var(--ink-lt);display:flex;align-items:center;transition:color 0.2s}
+.btn-booknow{background:var(--gold);color:#fff;padding:0.55rem 1.4rem;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:background 0.2s;border:none;cursor:pointer}
+.btn-booknow:hover{background:#9E7585}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--gold)}
+.mob-nav{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid rgba(197,157,171,0.15);padding:1.5rem 2rem 2rem;z-index:199;flex-direction:column}
+.mob-nav.open{display:flex}
+.mob-nav a{font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;padding:0.9rem 0;border-bottom:1px solid rgba(197,157,171,0.1)}
+.mob-nav a:last-child{margin-top:1rem;background:var(--gold);color:#fff;text-align:center;padding:0.85rem;border:none;border-radius:3px}
+
+.page-hero{margin-top:64px;position:relative;overflow:hidden;padding:6rem 3rem 5rem}
+.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(247,243,236,0.88) 0%,rgba(247,243,236,0.7) 60%,rgba(247,243,236,0.35) 100%)}
+.ph-inner{max-width:960px;margin:0 auto;position:relative;z-index:1}
+.ph-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem}
+.ph-h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:1rem}
+.ph-h1 em{font-style:italic;color:var(--gold)}
+.ph-sub{font-size:1.05rem;font-weight:400;color:var(--ink-mid);max-width:560px;line-height:1.8}
+
+/* HOW IT WORKS */
+.how-section{padding:5rem 3rem;background:#fff}
+.how-inner{max-width:960px;margin:0 auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.step{text-align:center;padding:2rem 1.5rem;background:var(--beige);border-radius:8px;position:relative}
+.step-num{font-family:var(--serif);font-size:3rem;font-weight:700;color:rgba(197,157,171,0.2);line-height:1;margin-bottom:0.5rem}
+.step h4{font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem}
+.step p{font-size:0.9rem;font-weight:400;color:var(--ink-mid);line-height:1.75}
+
+/* BOOKING AREA */
+.booking-section{padding:5rem 3rem;background:var(--beige)}
+.bk-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.bk-info h2{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--ink);margin-bottom:1rem}
+.bk-info p{font-size:0.97rem;font-weight:400;color:var(--ink-mid);line-height:1.85;margin-bottom:1.2rem}
+.bk-detail{display:flex;align-items:flex-start;gap:0.8rem;margin-bottom:1rem}
+.bk-icon{width:34px;height:34px;background:rgba(197,157,171,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;margin-top:2px}
+.bk-detail-text{font-size:0.95rem;font-weight:400;color:var(--ink-mid)}
+.bk-detail-text strong{font-weight:700;color:var(--ink);display:block}
+
+.bk-form-wrap{background:#fff;border-radius:10px;padding:2.5rem;box-shadow:0 4px 30px rgba(44,36,24,0.08)}
+.bk-form-wrap h3{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem}
+.bk-form-wrap p{font-size:0.85rem;color:var(--ink-lt);margin-bottom:1.5rem}
+.pf-group{margin-bottom:1.2rem}
+.pf-group label{display:block;font-size:0.63rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:0.4rem}
+.pf-group input,.pf-group select,.pf-group textarea{width:100%;padding:0.75rem 1rem;font-family:var(--sans);font-size:0.95rem;font-weight:400;color:var(--ink);background:var(--beige);border:1.5px solid rgba(197,157,171,0.2);border-radius:5px;outline:none;transition:border-color 0.2s;appearance:none}
+.pf-group input:focus,.pf-group select:focus,.pf-group textarea:focus{border-color:var(--gold)}
+.pf-group textarea{resize:vertical;min-height:100px}
+.pf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.pf-submit{width:100%;background:var(--gold);color:#fff;padding:1rem;font-family:var(--sans);font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border:none;border-radius:5px;cursor:pointer;transition:background 0.2s;margin-top:0.5rem}
+.pf-submit:hover{background:#9E7585}
+
+/* DAY PICKER */
+.day-picker{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.3rem}
+.day-btn{cursor:pointer}
+.day-btn input{position:absolute;opacity:0;width:0;height:0}
+.day-btn span{
+  display:flex;align-items:center;justify-content:center;
+  width:38px;height:38px;
+  border-radius:50%;
+  border:1.5px solid rgba(197,157,171,0.4);
+  font-size:0.72rem;font-weight:700;letter-spacing:0.05em;
+  color:var(--ink-mid);
+  transition:all 0.18s;
+  user-select:none;
+}
+.day-btn input:checked + span{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:#fff;
+}
+.day-btn span:hover{border-color:var(--gold);color:var(--gold)}
+
+/* CALENDLY SUGGESTED */
+.suggested{border:2px dashed rgba(197,157,171,0.4);border-radius:8px;background:rgba(197,157,171,0.03);position:relative;padding:2.5rem;margin-top:3rem}
+.suggested::before{content:'✦ Suggested Section';position:absolute;top:-12px;left:1.5rem;background:#fff;padding:0 0.6rem;font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(197,157,171,0.6)}
+.sug-h3{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:rgba(44,36,24,0.5);font-style:italic;margin-bottom:0.7rem}
+.sug-p{font-size:0.9rem;color:rgba(90,78,69,0.5);line-height:1.75}
+.calendly-mock{height:200px;border:1.5px dashed rgba(197,157,171,0.3);border-radius:6px;margin-top:1.2rem;display:flex;align-items:center;justify-content:center;color:rgba(90,78,69,0.4);font-size:0.9rem;font-style:italic}
+
+.success-msg{display:none;text-align:center;padding:2rem}
+.success-msg svg{color:var(--gold);margin-bottom:1rem}
+.success-msg h3{font-family:var(--serif);font-size:1.5rem;color:var(--ink);margin-bottom:0.5rem}
+.success-msg p{color:var(--ink-lt)}
+
+footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:2.5rem 3rem}
+.foot-inner{max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-logo{font-family:var(--serif);font-size:1.1rem;color:rgba(255,255,255,0.9)}
+.foot-copy{font-size:0.75rem;font-weight:400;letter-spacing:0.04em}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s}
+.foot-links a:hover{color:var(--gold-lt)}
+
+@media(max-width:860px){
+  .nav-links,.nav-ig,.btn-booknow{display:none}
+  .hamburger{display:flex}
+  .steps{grid-template-columns:1fr}
+  .bk-inner{grid-template-columns:1fr;gap:2.5rem}
+}
+@media(max-width:580px){
+  nav{padding:0 1.5rem}
+  .page-hero,.how-section,.booking-section{padding-left:1.5rem;padding-right:1.5rem}
+  .pf-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-brand-icon">M</div>
+    <div class="nav-brand-text"><span class="nav-brand-name">The Milk Movement</span><span class="nav-brand-sub">Lactation Consultant</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li><li><a href="schedule.html" class="active">Schedule</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <button class="btn-booknow" onclick="document.getElementById('bookForm').scrollIntoView({behavior:'smooth'})">Book Now</button>
+    <button class="hamburger" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="schedule.html">Schedule</a><a href="contact.html">Contact</a>
+  <a href="#bookForm" onclick="closeMob()">Book a Consultation</a>
+</div>
+
+<div class="page-hero">
+  <img class="page-hero-img" src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1400&h=600&fit=crop&q=80" alt="Planner and calendar">
+  <div class="page-hero-overlay"></div>
+  <div class="ph-inner">
+    <p class="ph-eyebrow">Schedule</p>
+    <h1 class="ph-h1">Book your<br><em>consultation</em></h1>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <div class="how-inner">
+    
+    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;color:var(--ink)">How it works</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><h4>Fill out the form</h4><p>Share your contact info and preferred session type. It only takes a minute.</p></div>
+      <div class="step"><div class="step-num">02</div><h4>I reach out</h4><p>I'll reach out to confirm your appointment details and answer any questions.</p></div>
+      <div class="step"><div class="step-num">03</div><h4>Your session</h4><p>We meet in person or virtually. I'll assess, advise, and build a personalized plan together with you.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING FORM -->
+<div class="booking-section" id="bookForm">
+  <div class="bk-inner">
+    <div class="bk-info">
+      <h2>Ready to book?</h2>
+      <p>I'm currently offering free consultations as I apply to sit for the IBCLC exam. No strings attached — just real, compassionate support for you and your baby.</p>
+      <div class="bk-detail">
+        <div class="bk-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <div class="bk-detail-text"><strong>Home Visits</strong>Northwest Ohio &amp; Southeast Michigan</div>
+      </div>
+      <div class="bk-detail">
+        <div class="bk-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="bk-detail-text"><strong>Virtual Appointments</strong>Available nationwide &amp; internationally</div>
+      </div>
+
+    </div>
+
+    <div class="bk-form-wrap" id="formWrap">
+      <h3>Request a Consultation</h3>
+      <p>Share your details and I'll be in touch to get you scheduled.</p>
+      <form id="schedForm" onsubmit="submitSchedule(event)">
+        <input type="hidden" name="_subject" value="New Consultation Request — The Milk Movement">
+        <div class="pf-row">
+          <div class="pf-group"><label>First Name</label><input type="text" name="firstName" placeholder="Jane" required></div>
+          <div class="pf-group"><label>Last Name</label><input type="text" name="lastName" placeholder="Smith" required></div>
+        </div>
+        <div class="pf-group"><label>Email</label><input type="email" name="email" placeholder="jane@example.com" required></div>
+        <div class="pf-group"><label>Phone</label><input type="tel" name="phone" placeholder="(555) 000-0000"></div>
+        <div class="pf-group">
+          <label>Preferred Contact Method</label>
+          <select name="contactMethod">
+            <option value="">Select...</option>
+            <option>Email</option>
+            <option>Phone Call</option>
+            <option>Text Message</option>
+          </select>
+        </div>
+        <div class="pf-group">
+          <label>Session Type</label>
+          <select name="sessionType" required>
+            <option value="">Select...</option>
+            <option>Home Visit</option>
+            <option>Virtual Appointment</option>
+            <option>In-Person (Limited Availability)</option>
+            <option>Prenatal Consultation</option>
+          </select>
+        </div>
+        <div class="pf-group">
+          <label>Best Availability</label>
+          <select name="availability">
+            <option value="">Select...</option>
+            <option>Daytime (before 5pm EST)</option>
+            <option>Evening (after 5pm EST)</option>
+            <option>Either works</option>
+          </select>
+        </div>
+        <div class="pf-group">
+          <label>Preferred Days</label>
+          <div class="day-picker">
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Monday"><span>M</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Tuesday"><span>T</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Wednesday"><span>W</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Thursday"><span>Th</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Friday"><span>F</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Saturday"><span>Sa</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Sunday"><span>Su</span></label>
+          </div>
+        </div>
+        <div id="schedError" style="display:none;color:#c0392b;font-size:0.85rem;margin-bottom:0.8rem;padding:0.7rem 1rem;background:#fdf0f0;border-radius:4px;border-left:3px solid #c0392b">Something went wrong — please try again or email directly.</div>
+        <button type="submit" class="pf-submit">Request My Consultation</button>
+      </form>
+      <div class="success-msg" id="schedSuccess">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+        <h3>You're booked in!</h3>
+        <p>I'll reach out to confirm your appointment details.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="foot-inner"><span class="foot-logo">The Milk Movement</span><span class="foot-copy">© 2026 Sierra Perry · Lactation Consultant</span><div class="foot-links"><a href="about.html">About</a><a href="services.html">Services</a><a href="schedule.html">Schedule</a><a href="contact.html">Contact</a></div></div></footer>
+<script>
+function toggleMob(){document.getElementById('mobNav').classList.toggle('open')}
+function closeMob(){document.getElementById('mobNav').classList.remove('open')}
+async function submitSchedule(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = form.querySelector('.pf-submit');
+  var errBox = document.getElementById('schedError');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+  errBox.style.display = 'none';
+  try {
+    var res = await fetch('https://formspree.io/f/mpqobnow', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('schedSuccess').style.display = 'block';
+    } else {
+      var data = await res.json();
+      var msg = (data.errors && data.errors.length) ? data.errors.map(function(err){return err.message}).join(' · ') : 'Submission failed. Please try again.';
+      errBox.textContent = msg;
+      errBox.style.display = 'block';
+      btn.textContent = 'Request My Consultation';
+      btn.disabled = false;
+    }
+  } catch(err) {
+    errBox.textContent = 'Network error — please check your connection and try again.';
+    errBox.style.display = 'block';
+    btn.textContent = 'Request My Consultation';
+    btn.disabled = false;
+  }
+}
+</script>
+</body></html>

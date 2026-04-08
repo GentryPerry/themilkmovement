@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | The Milk Movement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f7f3ec;--beige:#f0ede4;--mauve:#d4bac3;
+  --gold:#C59DAB;--gold-lt:#D9C2CC;--rose:#b08090;
+  --ink:#2c2418;--ink-mid:#5a4e45;--ink-lt:#8a7e76;
+  --serif:'DM Sans','Helvetica Neue',Arial,sans-serif;
+  --sans:'DM Sans','Helvetica Neue',Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:#fff;color:var(--ink);font-size:22px;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;background:rgba(255,255,255,0.96);border-bottom:1px solid rgba(197,157,171,0.12);backdrop-filter:blur(8px)}
+.nav-brand{display:flex;align-items:center;gap:0.7rem;text-decoration:none}
+.nav-brand-icon{width:38px;height:38px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:1.1rem;font-weight:700;font-style:italic}
+.nav-brand-text{line-height:1.1}
+.nav-brand-name{font-family:var(--serif);font-size:0.95rem;font-weight:500;color:var(--ink);display:block}
+.nav-brand-sub{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-lt);display:block}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-links a.active{border-bottom:2px solid var(--gold);padding-bottom:2px}
+.nav-ig{color:var(--ink-lt);display:flex;align-items:center;transition:color 0.2s}
+.btn-booknow{background:var(--gold);color:#fff;padding:0.55rem 1.4rem;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:background 0.2s;border:none;cursor:pointer}
+.btn-booknow:hover{background:#9E7585}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--gold)}
+.mob-nav{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid rgba(197,157,171,0.15);padding:1.5rem 2rem 2rem;z-index:199;flex-direction:column}
+.mob-nav.open{display:flex}
+.mob-nav a{font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;padding:0.9rem 0;border-bottom:1px solid rgba(197,157,171,0.1)}
+.mob-nav a:last-child{margin-top:1rem;background:var(--gold);color:#fff;text-align:center;padding:0.85rem;border:none;border-radius:3px}
+
+.page-hero{margin-top:64px;background:var(--beige);padding:5rem 3rem 4rem}
+.ph-inner{max-width:960px;margin:0 auto}
+.ph-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem}
+.ph-h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:1rem}
+.ph-h1 em{font-style:italic;color:var(--gold)}
+.ph-sub{font-size:1.05rem;font-weight:400;color:var(--ink-mid);max-width:560px;line-height:1.8}
+
+/* CONTACT LAYOUT */
+.contact-section{padding:5rem 3rem;background:#fff}
+.ct-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:start}
+.ct-side h2{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:1rem}
+.ct-side p{font-size:0.97rem;font-weight:400;color:var(--ink-mid);line-height:1.85;margin-bottom:2rem}
+.ct-detail{display:flex;align-items:center;gap:0.9rem;margin-bottom:1rem}
+.ct-icon{width:38px;height:38px;background:rgba(197,157,171,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0}
+.ct-detail-text{font-size:0.95rem;font-weight:400;color:var(--ink-mid)}
+.ct-detail-text strong{font-weight:700;color:var(--ink);display:block;font-size:0.85rem}
+.ct-quote{margin-top:2.5rem;padding:1.5rem 2rem;border-left:3px solid var(--gold);background:rgba(197,157,171,0.04);border-radius:0 6px 6px 0}
+.ct-quote blockquote{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--ink-mid);line-height:1.6}
+.ct-quote cite{display:block;font-family:var(--sans);font-size:0.68rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-top:0.8rem;font-style:normal}
+
+/* FORM */
+.ct-form-wrap{background:var(--beige);border-radius:10px;padding:2.5rem}
+.ct-form-wrap h3{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem}
+.ct-form-wrap p{font-size:0.85rem;color:var(--ink-lt);margin-bottom:1.5rem}
+.pf-group{margin-bottom:1.2rem}
+.pf-group label{display:block;font-size:0.63rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:0.4rem}
+.pf-group input,.pf-group select,.pf-group textarea{width:100%;padding:0.75rem 1rem;font-family:var(--sans);font-size:0.95rem;font-weight:400;color:var(--ink);background:#fff;border:1.5px solid rgba(197,157,171,0.2);border-radius:5px;outline:none;transition:border-color 0.2s;appearance:none}
+.pf-group input:focus,.pf-group select:focus,.pf-group textarea:focus{border-color:var(--gold)}
+.pf-group textarea{resize:vertical;min-height:110px}
+.pf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.day-picker{display:flex;gap:0.4rem;flex-wrap:wrap}
+.day-btn{cursor:pointer}
+.day-btn input{position:absolute;opacity:0;width:0;height:0}
+.day-btn span{display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--beige);border:1.5px solid rgba(197,157,171,0.3);font-size:0.75rem;font-weight:600;color:var(--ink-mid);transition:background 0.15s,border-color 0.15s,color 0.15s;user-select:none}
+.day-btn input:checked+span{background:var(--gold);border-color:var(--gold);color:#fff}
+.pf-submit{width:100%;background:var(--gold);color:#fff;padding:1rem;font-family:var(--sans);font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border:none;border-radius:5px;cursor:pointer;transition:background 0.2s;margin-top:0.5rem}
+.pf-submit:hover{background:#9E7585}
+.success-msg{display:none;text-align:center;padding:2rem 0}
+.success-msg svg{color:var(--gold);margin-bottom:1rem}
+.success-msg h3{font-family:var(--serif);font-size:1.5rem;color:var(--ink);margin-bottom:0.5rem}
+.success-msg p{color:var(--ink-lt)}
+
+/* FAQ */
+.faq-section{padding:5rem 3rem;background:var(--beige)}
+.faq-inner{max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(197,157,171,0.2);padding:1.2rem 0}
+.faq-item:first-of-type{border-top:1px solid rgba(197,157,171,0.2)}
+.faq-q{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem}
+.faq-a{font-size:0.95rem;font-weight:400;color:var(--ink-mid);line-height:1.8}
+
+footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:2.5rem 3rem}
+.foot-inner{max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-logo{font-family:var(--serif);font-size:1.1rem;color:rgba(255,255,255,0.9)}
+.foot-copy{font-size:0.75rem;font-weight:400;letter-spacing:0.04em}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s}
+.foot-links a:hover{color:var(--gold-lt)}
+
+@media(max-width:860px){
+  .nav-links,.nav-ig,.btn-booknow{display:none}
+  .hamburger{display:flex}
+  .ct-inner{grid-template-columns:1fr;gap:2.5rem}
+}
+@media(max-width:580px){
+  nav{padding:0 1.5rem}
+  .page-hero,.contact-section,.faq-section{padding-left:1.5rem;padding-right:1.5rem}
+  .pf-row{grid-template-columns:1fr}
+  .ct-form-wrap{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-brand-icon">M</div>
+    <div class="nav-brand-text"><span class="nav-brand-name">The Milk Movement</span><span class="nav-brand-sub">Lactation Consultant</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li><li><a href="schedule.html">Schedule</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <button class="btn-booknow" onclick="document.getElementById('ctForm').scrollIntoView({behavior:'smooth'})">Book Now</button>
+    <button class="hamburger" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="schedule.html">Schedule</a><a href="contact.html">Contact</a>
+  <a href="#ctForm" onclick="closeMob()">Get In Touch</a>
+</div>
+
+<div class="page-hero">
+  <div class="ph-inner">
+    <p class="ph-eyebrow">Contact</p>
+    <h1 class="ph-h1">Let's start your<br><em>journey together</em></h1>
+    <p class="ph-sub">Ready to get support? Have a question? I'd love to hear from you. Fill out the form and I'll be in touch soon.</p>
+  </div>
+</div>
+
+<div class="contact-section" id="ctForm">
+  <div class="ct-inner">
+    <div class="ct-side">
+      <h2>I'd love to hear from you</h2>
+      <p>Whether you're ready to book or just have a question about breastfeeding, I'm here. No question is too small — every mother's situation is unique and I'm always happy to chat.</p>
+      <div class="ct-detail">
+        <div class="ct-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
+        <div class="ct-detail-text"><strong>Email</strong>hello@themilkmovement.com</div>
+      </div>
+      <div class="ct-detail">
+        <div class="ct-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 13.41a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.12 6.12l.94-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="ct-detail-text"><strong>Response time</strong>As soon as possible</div>
+      </div>
+      <div class="ct-quote">
+        <blockquote>"Every family deserves support that's truly theirs — no judgment, no script, just real care."</blockquote>
+        <cite>— Sierra Perry</cite>
+      </div>
+    </div>
+
+    <div class="ct-form-wrap">
+      <h3>Send a message</h3>
+      <p>Fill out the form and I'll be in touch soon.</p>
+      <form onsubmit="submitContact(event)" id="contactFormEl">
+        <input type="hidden" name="_subject" value="New Consultation Request — The Milk Movement">
+        <div class="pf-row">
+          <div class="pf-group"><label>First Name</label><input type="text" name="firstName" placeholder="Jane" required></div>
+          <div class="pf-group"><label>Last Name</label><input type="text" name="lastName" placeholder="Smith" required></div>
+        </div>
+        <div class="pf-group"><label>Email</label><input type="email" name="email" placeholder="jane@example.com" required></div>
+        <div class="pf-group"><label>Phone</label><input type="tel" name="phone" placeholder="(555) 000-0000"></div>
+        <div class="pf-group">
+          <label>Preferred Contact Method</label>
+          <select name="contactMethod">
+            <option value="">Select...</option>
+            <option>Email</option>
+            <option>Phone Call</option>
+            <option>Text Message</option>
+          </select>
+        </div>
+        <div class="pf-group">
+          <label>Session Type</label>
+          <select name="sessionType" required>
+            <option value="">Select...</option>
+            <option>Home Visit</option>
+            <option>Virtual Appointment</option>
+            <option>In-Person (Limited Availability)</option>
+            <option>Prenatal Consultation</option>
+          </select>
+        </div>
+        <div class="pf-group">
+          <label>Best Availability</label>
+          <select name="availability">
+            <option value="">Select...</option>
+            <option>Daytime (before 5pm EST)</option>
+            <option>Evening (after 5pm EST)</option>
+            <option>Either works</option>
+          </select>
+        </div>
+        <div class="pf-group">
+          <label>Preferred Days</label>
+          <div class="day-picker">
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Monday"><span>M</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Tuesday"><span>T</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Wednesday"><span>W</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Thursday"><span>Th</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Friday"><span>F</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Saturday"><span>Sa</span></label>
+            <label class="day-btn"><input type="checkbox" name="preferredDays" value="Sunday"><span>Su</span></label>
+          </div>
+        </div>
+        <div id="contactError" style="display:none;color:#c0392b;font-size:0.85rem;margin-bottom:0.8rem;padding:0.7rem 1rem;background:#fdf0f0;border-radius:4px;border-left:3px solid #c0392b">Something went wrong — please try again.</div>
+        <button type="submit" class="pf-submit">Send Message</button>
+      </form>
+      <div class="success-msg" id="ctSuccess">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+        <h3>Message received!</h3>
+        <p>Thank you for reaching out. I'll be in touch soon.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem">Quick Answers</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;color:var(--ink);margin-bottom:2.5rem">Frequently asked questions</h2>
+    <div class="faq-item"><p class="faq-q">How long is a consultation?</p><p class="faq-a">Initial consultations are typically 60–90 minutes. Follow-up sessions are usually 45–60 minutes. I never rush — we take the time your situation needs.</p></div>
+    <div class="faq-item"><p class="faq-q">Is it really free?</p><p class="faq-a">Yes! I'm currently working toward my IBCLC certification and offering services at no cost. There are absolutely no strings attached — this is real, compassionate care.</p></div>
+    <div class="faq-item"><p class="faq-q">How quickly can I get an appointment?</p><p class="faq-a">I understand breastfeeding concerns can't always wait, and I do my best to see families as soon as possible.</p></div>
+    <div class="faq-item"><p class="faq-q">What if my issue is outside your scope of practice?</p><p class="faq-a">When issues fall outside my scope, I will always provide referrals to the appropriate providers — including physicians, pediatricians, and specialists.</p></div>
+    <div class="faq-item"><p class="faq-q">Do you support formula and combo feeding?</p><p class="faq-a">Absolutely. My support is judgment-free. However you choose to feed your baby, I'm here to help make it work for your family.</p></div>
+  </div>
+</div>
+
+<footer><div class="foot-inner"><span class="foot-logo">The Milk Movement</span><span class="foot-copy">© 2026 Sierra Perry · Lactation Consultant</span><div class="foot-links"><a href="about.html">About</a><a href="services.html">Services</a><a href="schedule.html">Schedule</a><a href="contact.html">Contact</a></div></div></footer>
+<script>
+function toggleMob(){document.getElementById('mobNav').classList.toggle('open')}
+function closeMob(){document.getElementById('mobNav').classList.remove('open')}
+async function submitContact(e){
+  e.preventDefault();
+  var form=e.target;
+  var b=form.querySelector('.pf-submit');
+  var errDiv=document.getElementById('contactError');
+  b.textContent='Sending…';b.disabled=true;
+  errDiv.style.display='none';
+  try{
+    var res=await fetch('https://formspree.io/f/mpqobnow',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+    if(res.ok){
+      document.getElementById('contactFormEl').style.display='none';
+      document.getElementById('ctSuccess').style.display='block';
+    } else {
+      errDiv.style.display='block';
+      b.textContent='Send Message';b.disabled=false;
+    }
+  } catch(err){
+    errDiv.style.display='block';
+    b.textContent='Send Message';b.disabled=false;
+  }
+}
+</script>
+</body></html>
